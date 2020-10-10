@@ -1,0 +1,52 @@
+.e-pokemon-card {
+  height: 170px;
+  border-radius: $border-radius;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+
+  &__left {
+    color: #fff;
+    height: auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: flex-start;
+
+    &--title {
+      font-weight: bold;
+      font-size: 24px;
+      text-transform: capitalize;
+    }
+
+    &--number {
+      margin: 5px 0;
+    }
+
+    &--typing {
+      background: rgba(255, 255, 255, .3);
+      border-radius: $border-radius;
+      padding: 10px;
+      margin: 5px 0 0 0;
+      text-transform: capitalize;
+      font-size: 15px;
+    }
+  }
+
+  &__right {
+    color: #000;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex: 1;
+
+    &--image {
+      flex: 10;
+      width: 100%;
+      max-height: 150px;
+      padding: 10px;
+    }
+  }
+}

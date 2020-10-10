@@ -1,0 +1,1 @@
+export const LIMIT_POKEMON_FETCH = 25;
