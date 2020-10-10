@@ -23,7 +23,6 @@ const PokemonListContextProvider = ({children}: Partial<PokemonListContextProvid
   const loadMorePokemon = () => {
     axios(`https://pokeapi.co/api/v2/pokemon/?limit=${LIMIT_POKEMON_FETCH}&offset=${offset}`)
       .then(r => {
-        setPokemonList(r.data.results);
         return r.data.results;
       })
       .then(r => {
@@ -34,7 +33,10 @@ const PokemonListContextProvider = ({children}: Partial<PokemonListContextProvid
       }).then(r => {
       const list = r.map(({data}: any) => data);
       // @ts-ignore
-      setPokemonList(prevState => [...prevState, ...list]);
+      setPokemonList(prevState => {
+        console.log([...prevState, ...list])
+        return [...prevState, ...list]
+      });
       setOffset(prevState => prevState + LIMIT_POKEMON_FETCH);
     })
       .catch(e => console.log(e));
