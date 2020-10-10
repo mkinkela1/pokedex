@@ -7,11 +7,19 @@
         "scss/base/6-layout-grid",
         "scss/base/7-containers",
         "scss/base/8-mixins",
-        "scss/base/9-globals.scss";
+        "scss/base/9-globals.scss",
+        "scss/base/10-default";
 
 //Sections
 @import "scss/sections/section-header",
         "scss/sections/section-menu";
+
+//Elements
+@import "scss/elements/element-pokemon-card",
+        "scss/elements/element-load-more";
+
+//Utilities
+@import "scss/utilities/background";
 
 //Layout
 @import "scss/layout/grid",
