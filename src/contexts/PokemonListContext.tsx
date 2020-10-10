@@ -44,6 +44,7 @@ const PokemonListContextProvider = ({children}: Partial<PokemonListContextProvid
 
   useEffect(() => {
     loadMorePokemon()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
