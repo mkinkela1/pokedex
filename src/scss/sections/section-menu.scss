@@ -1,0 +1,30 @@
+.s-menu {
+  width: 100%;
+  background: $header-background;
+
+  ul {
+    list-style-type: none;
+    background: $header-background;
+
+    li {
+      width: 100%;
+      border-bottom: 1px solid #fff;
+      text-align: center;
+      padding: 10px;
+
+      &:hover {
+        background: #efefef;
+        a {
+          color: #000;
+        }
+      }
+
+      a {
+        color: #fff;
+        font-family: 'Open Sans', monospace;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
