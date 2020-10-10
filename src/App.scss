@@ -11,7 +11,8 @@
         "scss/base/10-default";
 
 //Sections
-@import "scss/sections/section-header",
+@import "scss/sections/section-main",
+        "scss/sections/section-header",
         "scss/sections/section-menu";
 
 //Elements
