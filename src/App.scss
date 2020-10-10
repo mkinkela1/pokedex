@@ -1,0 +1,18 @@
+//Base
+@import "scss/base/1-reset",
+        "scss/base/2-fonts",
+        "scss/base/3-colors",
+        "scss/base/4-z_indexes",
+        "scss/base/5-breakpoints",
+        "scss/base/6-layout-grid",
+        "scss/base/7-containers",
+        "scss/base/8-mixins",
+        "scss/base/9-globals.scss";
+
+//Sections
+@import "scss/sections/section-header",
+        "scss/sections/section-menu";
+
+//Layout
+@import "scss/layout/grid",
+        "scss/layout/containers";

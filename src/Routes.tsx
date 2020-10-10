@@ -9,12 +9,12 @@ import RouteWithLayout from './components';
 const Routes: FunctionComponent = () => {
   return (
     <Switch>
-      <Redirect exact from="/" to="/home" />
+      <Redirect exact from="/" to="/pokedex" />
       <RouteWithLayout
         component={PokemonListView}
         exact
         layout={MainLayout}
-        path="/home"
+        path="/pokedex"
       />
       <Redirect to="/not-found" />
     </Switch>

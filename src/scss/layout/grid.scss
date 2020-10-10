@@ -1,0 +1,72 @@
+.l-grid{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+
+  &__row{
+    margin-right: $grid-gap;
+    &:last-of-type{
+      margin-right: 0px;
+    }
+  }
+
+  &__row-1 {
+    max-width: calc(100% / 12);
+    width: 100%;
+  }
+
+  &__row-2{
+    max-width: calc((100% / 12)*2);
+    width: 100%;
+  }
+
+  &__row-3{
+    max-width: calc((100% / 12)*3);
+    width: 100%;
+  }
+
+  &__row-4{
+    max-width: calc((100% / 12)*4);
+    width: 100%;
+  }
+
+  &__row-5{
+    max-width: calc((100% / 12)*5);
+    width: 100%;
+  }
+
+  &__row-6{
+    max-width: calc((100% / 12)*6);
+    width: 100%;
+  }
+
+  &__row-7{
+    max-width: calc((100% / 12)*7);
+    width: 100%;
+  }
+
+  &__row-8{
+    max-width: calc((100% / 12)*8);
+    width: 100%;
+  }
+
+  &__row-9{
+    max-width: calc((100% / 12)*9);
+    width: 100%;
+  }
+
+  &__row-10{
+    max-width: calc((100% / 12)*10);
+    width: 100%;
+  }
+
+  &__row-11{
+    max-width: calc((100% / 12)*11);
+    width: 100%;
+  }
+
+  &__row-12{
+    max-width: calc((100% / 12)*12);
+    width: 100%;
+  }
+}
