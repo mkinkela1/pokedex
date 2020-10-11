@@ -1,21 +1,38 @@
-import React, {FunctionComponent, useContext} from 'react';
+import React, {FunctionComponent, useContext, useEffect, useState} from 'react';
+import { useParams } from 'react-router-dom';
 import {Header, Menu} from "./components";
 import {MenuContext} from "../../contexts/MenuContext";
+import PokemonDetailsAPI from "../../api/PokemonDetailsAPI";
 
 interface MainProps {
-  children?: React.ReactNode;
+  children?: React.ReactNode
 }
 
-const Main: FunctionComponent<MainProps> = props => {
+const Main: FunctionComponent<MainProps> = (props) => {
 
+  const [pokemonDetails, setPokemonDetails] = useState({
+    types: [
+      {
+        type: {
+          name: 'normal'
+        }
+      }
+    ]
+  });
   const { showMenu } = useContext(MenuContext);
-  const { children } = props;
+  const { id } = useParams();
+
+  useEffect(() => {
+    PokemonDetailsAPI
+      .index(id)
+      .then(r => { setPokemonDetails(r.data); console.log(r.data) });
+  }, [id]);
 
   return (
-    <section className="s-main">
+    <section className={id ? `u-background u-background--${pokemonDetails.types[0].type.name} s-main` : 's-main'}>
       <Header />
       {showMenu && <Menu />}
-      <main>{children}</main>
+      <main>{props.children}</main>
     </section>
   );
 };
