@@ -14,8 +14,8 @@ const PokemonList = () => {
           pokemonList.map((pokemon: any, idx) => {
             if (pokemon && pokemon.sprites && pokemon.sprites.front_default)
               return (
-                <Link to={location => ({ ...location, pathname: `/pokemon/${pokemon.id}` })}>
-                  <section className={`e-pokemon-card u-background u-background--${pokemon.types[0].type.name}`} key={idx}>
+                <Link to={location => ({ ...location, pathname: `/pokemon/${pokemon.id}` })} key={idx}>
+                  <section className={`e-pokemon-card u-background u-background--${pokemon.types[0].type.name}`}>
                     <div className="e-pokemon-card__left">
                       <div className="e-pokemon-card__left--title">{pokemon.name}</div>
                       <div className="e-pokemon-card__left--number">#{String(pokemon.id).padStart(3, '0')}</div>
