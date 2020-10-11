@@ -5,14 +5,17 @@ import './App.scss';
 import Routes from "./Routes";
 import MenuContextProvider from "./contexts/MenuContext";
 import PokemonListContextProvider from "./contexts/PokemonListContext";
+import FavouritePokemonContextProvider from "./contexts/FavouritePokemonContext";
 
 function App() {
   return (
     <MenuContextProvider>
       <PokemonListContextProvider>
-        <BrowserRouter forceRefresh>
-          <Routes />
-        </BrowserRouter>
+        <FavouritePokemonContextProvider>
+          <BrowserRouter>
+            <Routes />
+          </BrowserRouter>
+        </FavouritePokemonContextProvider>
       </PokemonListContextProvider>
     </MenuContextProvider>
   );

@@ -1,21 +1,20 @@
 import React, {useContext} from 'react';
-import {PokemonListContext} from "../../contexts/PokemonListContext";
-import LoadMoreButton from "./components/LoadMoreButton";
 import {Link} from "react-router-dom";
+import {FavouritePokemonContext} from "../../contexts/FavouritePokemonContext";
 
-const PokemonList = () => {
+const MyPokemonList = () => {
 
-  const { pokemonList } = useContext(PokemonListContext);
+  const { favouritePokemonData } = useContext(FavouritePokemonContext);
 
   return (
     <>
       {
-        pokemonList && pokemonList.length > 0 ?
-          pokemonList.map((pokemon: any, idx) => {
+        favouritePokemonData && favouritePokemonData.length > 0 ?
+          favouritePokemonData.map((pokemon: any, idx: number) => {
             if (pokemon && pokemon.sprites && pokemon.sprites.front_default)
               return (
-                <Link to={location => ({ ...location, pathname: `/pokemon/${pokemon.id}` })}>
-                  <section className={`e-pokemon-card u-background u-background--${pokemon.types[0].type.name}`} key={idx}>
+                <Link to={location => ({ ...location, pathname: `/pokemon/${pokemon.id}` })} key={idx}>
+                  <section className={`e-pokemon-card u-background u-background--${pokemon.types[0].type.name}`}>
                     <div className="e-pokemon-card__left">
                       <div className="e-pokemon-card__left--title">{pokemon.name}</div>
                       <div className="e-pokemon-card__left--number">#{String(pokemon.id).padStart(3, '0')}</div>
@@ -33,11 +32,10 @@ const PokemonList = () => {
               )
             else return <></>
           })
-        : ''
+        : 'Nothing on this list'
       }
-      <LoadMoreButton />
     </>
   );
 };
 
-export default PokemonList;
+export default MyPokemonList;
