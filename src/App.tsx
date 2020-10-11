@@ -6,15 +6,18 @@ import Routes from "./Routes";
 import MenuContextProvider from "./contexts/MenuContext";
 import PokemonListContextProvider from "./contexts/PokemonListContext";
 import FavouritePokemonContextProvider from "./contexts/FavouritePokemonContext";
+import KantoPokemonContextProvider from "./contexts/KantoPokemonContext";
 
 function App() {
   return (
     <MenuContextProvider>
       <PokemonListContextProvider>
         <FavouritePokemonContextProvider>
-          <BrowserRouter>
-            <Routes />
-          </BrowserRouter>
+          <KantoPokemonContextProvider>
+            <BrowserRouter>
+              <Routes />
+            </BrowserRouter>
+          </KantoPokemonContextProvider>
         </FavouritePokemonContextProvider>
       </PokemonListContextProvider>
     </MenuContextProvider>

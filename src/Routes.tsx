@@ -6,7 +6,8 @@ import { Main as MainLayout } from './layouts';
 import {
   PokemonList as PokemonListView,
   SinglePokemonData as SinglePokemonDataView,
-  MyPokemonList as MyPokemonListView
+  MyPokemonList as MyPokemonListView,
+  Quiz as QuizView
 } from './pages';
 import RouteWithLayout from './components';
 
@@ -31,6 +32,12 @@ const Routes: FunctionComponent = () => {
         exact
         layout={MainLayout}
         path="/my-pokemon"
+      />
+      <RouteWithLayout
+        component={QuizView}
+        exact
+        layout={MainLayout}
+        path="/who-is-that-pokemon"
       />
       <Redirect to="/pokemon/404" />
     </Switch>

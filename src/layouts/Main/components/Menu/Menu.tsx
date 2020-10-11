@@ -11,7 +11,7 @@ const Menu = () => {
   const links: MenuItem[] = [
     {title: 'Pokedex', href: '/pokedex'},
     {title: 'My pokemon', href: '/my-pokemon'},
-    {title: 'Who is that pokemon', href: '/who-is-what-pokemon'},
+    {title: 'Who is that pokemon', href: '/who-is-that-pokemon'},
   ];
 
   return (
