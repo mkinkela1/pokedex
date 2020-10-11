@@ -1,4 +1,9 @@
-import React, {createContext, useState} from "react";
+import React, {createContext, useEffect, useState} from "react";
+import axios from 'axios';
+
+interface PokemonData {
+
+}
 
 interface FavouritePokemonContextProviderProps {
   favouritePokemon: number[],
@@ -6,6 +11,7 @@ interface FavouritePokemonContextProviderProps {
   removeFavourite: (id: number) => void,
   checkIfFavourite: (id: number) => boolean,
   toggleFavourite: (id: number) => void,
+  favouritePokemonData: PokemonData[]
   children: React.ReactNode
 }
 
@@ -14,6 +20,7 @@ export const FavouritePokemonContext = createContext<Partial<FavouritePokemonCon
 const FavouritePokemonContextProvider = ({children}: Partial<FavouritePokemonContextProviderProps>) => {
 
   const [favouritePokemon, setFavouritePokemon] = useState<number[]> ([]);
+  const [favouritePokemonData, setFavouritePokemonData] = useState<PokemonData[]> ([]);
 
   const addNewFavourite = (id: number) => setFavouritePokemon(prevState => prevState.concat(id))
   const removeFavourite = (id: number) => setFavouritePokemon(prevState => prevState.filter(pokemonId => id !== pokemonId))
@@ -24,13 +31,21 @@ const FavouritePokemonContextProvider = ({children}: Partial<FavouritePokemonCon
     else addNewFavourite(id);
   }
 
+  useEffect(() => {
+    Promise.all(
+      favouritePokemon.map((id: number) => axios(`https://pokeapi.co/api/v2/pokemon/${id}`))
+    )
+      .then((r: any) => setFavouritePokemonData(r.map((pokemon: any) => pokemon.data)))
+  }, [favouritePokemon]);
+
   return (
     <FavouritePokemonContext.Provider value={{
       favouritePokemon,
       addNewFavourite,
       removeFavourite,
       checkIfFavourite,
-      toggleFavourite
+      toggleFavourite,
+      favouritePokemonData
     }}>
       {children}
     </FavouritePokemonContext.Provider>
