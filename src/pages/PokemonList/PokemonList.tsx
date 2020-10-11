@@ -7,13 +7,11 @@ const PokemonList = () => {
 
   const { pokemonList } = useContext(PokemonListContext);
 
-  // @ts-ignore
   return (
     <>
       {
         pokemonList && pokemonList.length > 0 ?
           pokemonList.map((pokemon: any, idx) => {
-            console.log(pokemon.id);
             if (pokemon && pokemon.sprites && pokemon.sprites.front_default)
               return (
                 <Link to={location => ({ ...location, pathname: `/pokemon/${pokemon.id}` })}>
@@ -33,7 +31,7 @@ const PokemonList = () => {
                   </section>
                 </Link>
               )
-            else return (null)
+            else return <></>
           })
         : ''
       }

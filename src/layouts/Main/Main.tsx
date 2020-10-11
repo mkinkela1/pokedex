@@ -25,7 +25,7 @@ const Main: FunctionComponent<MainProps> = (props) => {
   useEffect(() => {
     PokemonDetailsAPI
       .index(id)
-      .then(r => { setPokemonDetails(r.data); console.log(r.data) });
+      .then(r => setPokemonDetails(r.data));
   }, [id]);
 
   return (
