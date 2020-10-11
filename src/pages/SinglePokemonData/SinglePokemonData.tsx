@@ -9,6 +9,7 @@ import {About, BaseStats, Moves} from "./components";
 import {FavouritePokemonContext} from "../../contexts/FavouritePokemonContext";
 import HeartFavourite from './../../assets/svg/heart_favourite.svg';
 import HeartNotFavourite from './../../assets/svg/heart_not_favourite.svg';
+import ShinyCharizard from './../../assets/images/shiny_charizard.png';
 
 interface Move {
   name: string,
@@ -34,6 +35,7 @@ const SinglePokemonData = () => {
 
   const [tabId, setTabId] = useState<number> (0);
   const [pokemonDetails, setPokemonDetails] = useState<PokemonDetails>({});
+  const [randomNumber, setRandomNumber] = useState<number> (0);
   const { checkIfFavourite, toggleFavourite } = useContext(FavouritePokemonContext);
   const { id } = useParams();
 
@@ -47,6 +49,7 @@ const SinglePokemonData = () => {
         const movesData = r.map(({data}: any) => data);
         setPokemonDetails((prevState: PokemonDetails) => ({...prevState, moves: movesData}));
       });
+    setRandomNumber(Math.random);
   }, [id]);
 
   const getTabData = () => {
@@ -58,6 +61,13 @@ const SinglePokemonData = () => {
       case 2:
         return <Moves data={pokemonDetails}/>
     }
+  }
+
+  const getImage = () => {
+
+    if(+id === 6 && randomNumber < 0.1)
+      return ShinyCharizard
+    else return pokemonDetails.sprites?.other['official-artwork'].front_default;
   }
 
   return (
@@ -79,7 +89,7 @@ const SinglePokemonData = () => {
           }
         </button>
       </div>
-      <img className="s-pokemon-details__image" src={pokemonDetails.sprites?.other['official-artwork'].front_default} alt={`${pokemonDetails.name} official artwork`}/>
+      <img className="s-pokemon-details__image" src={getImage()} alt={`${pokemonDetails.name} official artwork`}/>
       <div className="s-pokemon-details__content">
         <ul className="s-pokemon-details__content--menu">
           <li className={tabId === 0 ? 'active' : ''} onClick={() => setTabId(0)}>
