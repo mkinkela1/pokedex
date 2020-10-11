@@ -19,10 +19,12 @@
       font-weight: bold;
       font-size: 24px;
       text-transform: capitalize;
+      text-decoration: none;
     }
 
     &--number {
       margin: 5px 0;
+      text-decoration: none;
     }
 
     &--typing {
@@ -32,6 +34,9 @@
       margin: 5px 0 0 0;
       text-transform: capitalize;
       font-size: 15px;
+      text-decoration: none!important;
+
+
     }
   }
 
