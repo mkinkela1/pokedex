@@ -33,10 +33,7 @@ const PokemonListContextProvider = ({children}: Partial<PokemonListContextProvid
       }).then(r => {
       const list = r.map(({data}: any) => data);
       // @ts-ignore
-      setPokemonList(prevState => {
-        console.log([...prevState, ...list])
-        return [...prevState, ...list]
-      });
+      setPokemonList(prevState => [...prevState, ...list]);
       setOffset(prevState => prevState + LIMIT_POKEMON_FETCH);
     })
       .catch(e => console.log(e));

@@ -38,9 +38,18 @@
       li {
         flex: 1;
         border-bottom: 1px solid #ddd;
-        padding: 10px;
+        padding: 20px 0;
+        cursor: pointer;
 
-        &:hover, .active {
+        &.active {
+          border-bottom: 2px solid $header-background;
+
+          button {
+            font-weight: bold;
+          }
+        }
+
+        &:hover {
           border-bottom: 2px solid $header-background;
 
           button {
@@ -51,6 +60,28 @@
         button {
           all: unset;
         }
+      }
+    }
+
+    &--data {
+      padding: 10px;
+      text-align: left;
+
+      &--moves {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+
+        &--badge {
+          margin: 5px;
+          padding: 10px;
+          border-radius: 10px;
+          background: #3dc7ef;
+        }
+      }
+
+      &--about {
+
       }
     }
   }
