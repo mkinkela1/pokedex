@@ -22,7 +22,7 @@ const Routes: FunctionComponent = () => {
         layout={MainLayout}
         path="/pokemon/:id"
       />
-      <Redirect to="/not-found" />
+      <Redirect to="/pokemon/404" />
     </Switch>
   );
 };
