@@ -23,9 +23,10 @@ const Main: FunctionComponent<MainProps> = (props) => {
   const { id } = useParams();
 
   useEffect(() => {
-    PokemonDetailsAPI
-      .index(id)
-      .then(r => setPokemonDetails(r.data));
+    if(id)
+      PokemonDetailsAPI
+        .index(id)
+        .then(r => setPokemonDetails(r.data));
   }, [id]);
 
   return (

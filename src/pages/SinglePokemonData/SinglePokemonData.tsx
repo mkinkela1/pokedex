@@ -1,12 +1,14 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
 import axios from 'axios';
 
 import PokemonDetailsAPI from "../../api/PokemonDetailsAPI";
 import BackIcon from './../../assets/svg/back.svg';
-import HeartIcon from './../../assets/svg/heart.svg';
 
 import {About, BaseStats, Moves} from "./components";
+import {FavouritePokemonContext} from "../../contexts/FavouritePokemonContext";
+import HeartFavourite from './../../assets/svg/heart_favourite.svg';
+import HeartNotFavourite from './../../assets/svg/heart_not_favourite.svg';
 
 interface Move {
   name: string,
@@ -32,6 +34,7 @@ const SinglePokemonData = () => {
 
   const [tabId, setTabId] = useState<number> (0);
   const [pokemonDetails, setPokemonDetails] = useState<PokemonDetails>({});
+  const { checkIfFavourite, toggleFavourite } = useContext(FavouritePokemonContext);
   const { id } = useParams();
 
   useEffect(() => {
@@ -63,8 +66,17 @@ const SinglePokemonData = () => {
         <Link className="s-pokemon-details__topbar--back" to={location => ({ ...location, pathname: `/pokedex` })}>
           <img src={BackIcon} alt="Back button" style={{width: 64, height: 64}}/>
         </Link>
-        <button className="s-pokemon-details__topbar--heart">
-          <img src={HeartIcon} alt="Back button" style={{width: 64, height: 64}}/>
+        <button className="s-pokemon-details__topbar--heart" onClick={() => {
+          if (toggleFavourite) {
+            toggleFavourite(id)
+          }
+        }}>
+          {
+            !(checkIfFavourite) || checkIfFavourite(id) ?
+              <img src={HeartFavourite} alt="Back button" style={{width: 64, height: 64}}/>
+              :
+              <img src={HeartNotFavourite} alt="Back button" style={{width: 64, height: 64}}/>
+          }
         </button>
       </div>
       <img className="s-pokemon-details__image" src={pokemonDetails.sprites?.other['official-artwork'].front_default} alt={`${pokemonDetails.name} official artwork`}/>
